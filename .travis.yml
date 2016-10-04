@@ -1,0 +1,24 @@
+language: go
+
+sudo: false
+
+go:
+  - 1.7
+
+before_install:
+  - go get github.com/tools/godep
+  - go get github.com/signalfx/goverify
+  - go get github.com/signalfx/gobuild
+  - go get github.com/signalfx/gocoverdir
+  - go get github.com/axw/gocov/gocov
+  - go get github.com/mattn/goveralls
+
+install:
+  - godep go install -v .
+
+script:
+  - gobuild
+  - goveralls -coverprofile=coverage.out -service=travis-ci
+
+after_script:
+  - cat coverage.out

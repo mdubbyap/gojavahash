@@ -1,0 +1,21 @@
+[vars]
+  ignoreDirs = [".git"]
+  duplLimit = "300"
+  testCoverage = 100.0
+
+[metalinter]
+  [metalinter.vars]
+    args = ["-t", "--disable-all", "--vendor", "--min-confidence=.3", "--deadline=60s"]
+  [metalinter.ignored]
+    coverageignored = "ignored is unused"
+  [metalinter.enabled]
+    golint = true
+    gofmt = true
+    varcheck = true
+    aligncheck = true
+    gocyclo = true
+    vet = true
+    deadcode = true
+    unconvert = true
+    structcheck = true
+    ineffassign = true
